@@ -1,0 +1,1235 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introducción paso a paso al framework web [Laravel]">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/ales-laravel-sept-2026/introduccion.html">
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="acciones-enrutamiento-respuestas.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. Introducción - Introducción paso a paso al framework web [Laravel]</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introducción paso a paso al framework web [Laravel]";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-introduccion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introducción paso a paso al framework web [Laravel]" class="md-header__button md-logo" aria-label="Introducción paso a paso al framework web [Laravel]" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introducción paso a paso al framework web [Laravel]
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Introducción
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/ales-laravel-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introducción paso a paso al framework web [Laravel]" class="md-nav__button md-logo" aria-label="Introducción paso a paso al framework web [Laravel]" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introducción paso a paso al framework web [Laravel]
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/ales-laravel-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bienvenido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="introduccion.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-el-papel-de-laravel-en-una-aplicacion-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. El papel de Laravel en una aplicación web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-herramientas-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Herramientas utilizadas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-ejecutar-el-caso-de-estudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Ejecutar el caso de estudio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Ejecutar el caso de estudio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-instalacion-de-laragon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1. Instalación de Laragon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-ejecucion-del-caso-de-estudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2. Ejecución del caso de estudio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ejemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Ejemplos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-contenido-del-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. Contenido del documento
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="acciones-enrutamiento-respuestas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Acciones, enrutamiento, respuestas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="el-modelo-de-la-accion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. El modelo de la acción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="la-vista-y-su-modelo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. La vista y su modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="internacionalizacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Internacionalización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ambitos-de-los-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Ámbitos de los datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="el-ciclo-de-vida-de-una-solicitud.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. El ciclo de vida de una solicitud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="autenticacion-y-autorizacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Autenticación y autorización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arquitectura-en-capas-y-acceso-a-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Arquitectura en capas y acceso a datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion-provisional.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Conclusión provisional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="caso-de-estudio-la-aplicacion-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Caso de estudio: la aplicación RdvMedecins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Conclusión
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apendices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Apéndices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-introduccion">1. <span style="color: #2e74b5">Introducción</span></h1>
+<p>El PDF del documento está |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQCCdoMYxDCjQYJ1zTPN1MMQAXcZRW2Ew9A_UfsnIzZRebo">AQUÍ</a>|.</p>
+<p>Los códigos del documento están |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQA94TjQ9ktISL-D1NMIATnnAaFCUp9-A5D9NflqyET1tmU">AQUÍ</a>|.</p>
+<p>Este documento es un producto de Claude, la IA de Anthropic. Sigue al documento <a href="https://stahe.github.io/ales-flask-sept-2026/"><u><span style="color: #0563c1">“Introducción paso a paso al framework web [Flask]</span></u></a>” (2026), que a su vez siguió a los documentos <a href="https://stahe.github.io/ales-springmvc-sept-2026/"><u><span style="color: #0563c1">“Introducción paso a paso al framework web [Spring MVC]</span></u></a>,” &quot;<a href="https://stahe.github.io/ales-aspnetcoremvc-sept-2026/"><u><span style="color: #0563c1">Introducción paso a paso al framework web [ASP.NET Core MVC]</span></u></a>,&quot; y &quot;<a href="https://stahe.github.io/ales-nestjs-html-sept-2026/"><u><span style="color: #0563c1">Introducción paso a paso al framework web [NestJS]</span></u></a>&quot; (2026). Este documento adapta el curso de <em>[Flask]</em> al entorno <em>[PHP]</em>:</p>
+<ul>
+<li>el framework <em>[Flask]</em> y el lenguaje <em>[Python]</em> se reemplazan por el framework <em>[Laravel]</em> 13 y el lenguaje <em>[PHP]</em> (versión 8.4 o posterior);</li>
+<li>las vistas <em>[Jinja2]</em> se reemplazan por vistas <em>[Blade]</em>, el motor de vistas de <em>[Laravel]</em>;</li>
+<li>la validación mediante <em>[Pydantic]</em> y <em>[WTForms]</em> se reemplaza por la de <em>[Laravel]</em>: reglas de validación y <strong>solicitudes de formulario</strong> (<strong><em>[FormRequest]</em></strong>);</li>
+<li>las pocas decenas de líneas de código de seguridad escritas a mano para <em>[Flask]</em> se reemplazan por el sistema de autenticación de <em>[Laravel]</em> (guardias, middleware, <strong><em>[Gate]</em></strong>, fachada <strong><em>[Hash]</em></strong>, limitador de intentos), complementado con la biblioteca <em>[firebase/php-jwt]</em> para los tokens JWT;</li>
+<li>el ORM <em>[SQLAlchemy]</em> se reemplaza por el ORM de <em>[Laravel]</em>, <em>[Eloquent]</em>, que sigue basándose en <em>[MySQL]</em>.</li>
+</ul>
+<p>El documento sigue de cerca la estructura del curso de <em>[Flask]</em>: primero, numerosos proyectos pequeños, cada uno centrado en un concepto específico, seguidos de un caso de estudio completo —una aplicación web para agendar citas en un consultorio médico— con todos los archivos comentados en detalle. Los ejemplos tienen los mismos números y tratan los mismos temas que en los cursos de <em>[Flask]</em>, <em>[Spring MVC]</em> y <em>[ASP.NET Core MVC]</em>: un lector que conozca cualquiera de estos cursos puede comparar los frameworks ejemplo por ejemplo. Sin embargo, esto no es necesario: este documento se basta a sí mismo y no supone ningún conocimiento previo de esos frameworks. Los únicos requisitos previos son una comprensión básica de la programación web (el protocolo HTTP, el lenguaje HTML) y los fundamentos del lenguaje <em>[PHP]</em> (variables, arreglos, funciones, clases). El curso <a href="https://stahe.github.io/ales-php7-juillet-2019/"><u><span style="color: #0563c1">“Introducción al lenguaje PHP7 mediante ejemplos”</span></u></a> (2019) presenta el lenguaje en sí para quienes necesiten aprenderlo primero; las novedades de <em>[PHP]</em> 8 que se usan aquí (propiedades promovidas, clases <strong><em>[readonly]</em></strong>, enumeraciones, argumentos con nombre, el operador nullsafe, etc.) se explican cuando aparecen por primera vez.</p>
+<h2 id="11-el-papel-de-laravel-en-una-aplicacion-web">1.1. <span style="color: #2e74b5">El papel de Laravel en una aplicación web</span></h2>
+<p>Una aplicación web suele construirse en capas, y cada capa se comunica solo con las capas vecinas:</p>
+<p><img src="images/10000000000003E80000014A2C9D3009.png" width="605" height="200" style="width:16cm;height:5.279cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003E80000014A2C9D3009.png" /></p>
+<ul>
+<li>la capa web recibe las solicitudes HTTP del navegador y le devuelve páginas HTML. Es la capa que <em>[Laravel]</em> nos ayuda a escribir;</li>
+<li>la capa de negocio contiene las reglas de negocio de la aplicación (por ejemplo, “un paciente solo puede tener una cita próxima”). No sabe nada de la web: podría servir igualmente a una aplicación de línea de comandos;</li>
+<li>la capa de acceso a datos (capa DAO, por *Data Access Object*) lee y escribe en la base de datos. Usaremos <em>[Eloquent]</em>, el ORM (*Object Relational Mapper*) de <em>[Laravel]</em>, que asigna las filas de las tablas a objetos <em>[PHP]</em>.</li>
+</ul>
+<p>La propia capa web sigue el patrón MVC (*Model-View-Controller*):</p>
+<ul>
+<li>el controlador (C) es una clase <em>[PHP]</em> cuyos métodos, llamados <strong>acciones</strong>, atienden cada uno un tipo específico de solicitud (por ejemplo, <strong><em>[GET /schedule]</em></strong>). Una acción lee los parámetros de la solicitud, procesa la solicitud mediante la capa de negocio y luego selecciona la vista que se mostrará;</li>
+<li>el modelo (M) es el conjunto de datos que la acción pasa a la vista;</li>
+<li>la vista (V) es un archivo <em>[Blade]</em> (extensión <strong><em>[.blade.php]</em></strong>): una página HTML que contiene expresiones <strong><em>[{{ ... }}]</em></strong> y directivas <strong><em>[@if]</em></strong>, <strong><em>[@foreach]</em></strong>..., que el motor <em>[Blade]</em> reemplaza con los datos del modelo.</li>
+</ul>
+<p>Una nota sobre la terminología, para evitar confusiones: en <em>[Laravel]</em>, la palabra <strong>“modelo”</strong> (*model*) suele referirse a un modelo de <em>[Eloquent]</em>, una clase que representa una tabla de la base de datos (archivo de <strong><em>[app/Models]</em></strong>). Este documento usa la palabra en ambos sentidos, y precisa cada vez cuál se entiende: el <strong>modelo de la vista</strong> (los datos pasados a una vista) y el modelo de <em>[Eloquent]</em>  (como se verá en el capítulo sobre acceso a datos). La palabra <strong>“plantilla”</strong> se refiere a la vista común de la que heredan las demás páginas (capítulo sobre vistas).</p>
+<p>El procesamiento de una solicitud sigue los pasos numerados del diagrama:</p>
+<ul>
+<li>1: El navegador envía una solicitud HTTP, por ejemplo, <strong><em>[GET /schedule?doctorId=1&amp;day=2026-09-26]</em></strong>;</li>
+<li>2: El servidor web recibe la solicitud y se la pasa a la aplicación <em>[Laravel]</em> mediante el archivo <strong><em>[public/index.php]</em></strong>. Durante el desarrollo, este servidor es el que incluye <em>[PHP]</em>, iniciado con el comando <strong><em>[php artisan serve]</em></strong>; en producción, será un servidor como <em>[nginx]</em> o <em>[Apache]</em>, asociado con <em>[PHP-FPM]</em>. La solicitud pasa por componentes de <strong>middleware</strong> —clases que procesan todas las solicitudes (cookies, sesiones, seguridad, etc.)— y luego <em>[Laravel]</em> compara la ruta solicitada con las rutas de la aplicación y selecciona la acción encargada de atender esa solicitud: esto es el <strong>enrutamiento</strong>;</li>
+<li>3: La acción solicita a la capa de negocio los datos que necesita; si es necesario, la capa de negocio recurre a la capa DAO, que consulta la base de datos <em>[MySQL]</em> mediante SQL;</li>
+<li>4: La acción construye el modelo M de la vista e indica al motor <em>[Blade]</em> que genere la página (función <strong><em>[view]</em></strong>);</li>
+<li>5: La página HTML generada por la vista es la respuesta de la acción, que <em>[Laravel]</em> devuelve al navegador.</li>
+</ul>
+<p><em>[Laravel]</em> es, con diferencia, el framework web más utilizado del mundo <em>[PHP]</em>, por delante de <em>[Symfony]</em> (en cuyos componentes, dicho sea de paso, se basa). Gratuito y de código abierto, creado en 2011 por Taylor Otwell, funciona en cualquier lugar donde funcione <em>[PHP]</em> (<em>[Windows]</em>, <em>[Linux]</em>, <em>[macOS]</em>), y <em>[PHP]</em> funciona con casi todos los proveedores de alojamiento web. Es un framework <strong>integral</strong>: enrutamiento, vistas, validación, sesiones, caché, autenticación, traducción, acceso a bases de datos, envío de correos electrónicos, tareas en segundo plano... todo viene incluido y diseñado para funcionar en conjunto. Es lo opuesto al microframework <em>[Flask]</em> de la lección anterior, que dejaba al desarrollador la tarea de ensamblar sus propios componentes: <em>[Laravel]</em> hace mucho por sí solo, con muy poco código, y uno de los objetivos de este documento es revelar lo que ocurre “detrás de escena”. <em>[Laravel]</em> puede crear servidores que devuelven JSON a un cliente (<em>[JavaScript]</em>, <em>[Angular]</em>, <em>[React]</em>, <em>[Vue.js]</em>, [Flutter]...) así como aplicaciones web tradicionales, en las que el servidor genera las páginas HTML y el navegador se limita a mostrarlas. Es este segundo caso de uso el que examina este documento.</p>
+<p>Una particularidad de <em>[PHP]</em> explica buena parte de <em>[Laravel]</em>: la aplicación se <strong>reconstruye con cada solicitud</strong> y luego se descarta (Ejemplo 01). Volveremos a este punto con frecuencia.</p>
+<h2 id="12-herramientas-utilizadas">1.2. <span style="color: #2e74b5">Herramientas utilizadas</span></h2>
+<p>Los ejemplos se escribieron y probaron con las siguientes herramientas (las instrucciones de instalación se dan en el apéndice):</p>
+<ul>
+<li><em>[PHP]</em> 8.4 (sirve cualquier versión 8.4 o posterior), con las extensiones <strong><em>[intl]</em></strong>, <strong><em>[mbstring]</em></strong>, <strong><em>[openssl],</em></strong> y <strong><em>[pdo_mysql]</em></strong>;</li>
+<li><em>[Composer]</em> 2, el administrador de bibliotecas de <em>[PHP]</em>;</li>
+<li>el editor <em>[Visual Studio Code]</em>, con las extensiones <em>[PHP Intelephense]</em> (análisis de código) y <em>[Laravel]</em> (vistas <em>[Blade]</em>);</li>
+<li>un navegador reciente (<em>[Chrome]</em>, <em>[Firefox]</em>, <em>[Edge]</em>);</li>
+<li>la herramienta de línea de comandos <em>[curl]</em>, que muestra las respuestas HTTP sin procesar (viene incluida con <em>[Windows]</em> 10 y 11);</li>
+<li>el SGBD <em>[MySQL]</em> (o <em>[MariaDB]</em>), por ejemplo, el de <em>[Laragon]</em> en <em>[Windows]</em>, a partir del capítulo sobre acceso a datos y para el caso de estudio. En <em>[Windows]</em>, <em>[Laragon]</em> instala <em>[PHP]</em>, <em>[Composer],</em> y <em>[MySQL]</em> todo a la vez.</li>
+</ul>
+<p><em>[Laravel]</em> y las demás bibliotecas no forman parte de <em>[PHP]</em>: <em>[Composer]</em> las descarga del repositorio <em>[Packagist]</em> durante la instalación (por lo que ese día debe haber conexión a Internet) y las coloca en una carpeta <strong><em>[vendor]</em></strong>. Cada proyecto describe sus bibliotecas en un archivo <strong><em>[composer.json]</em></strong>. La siguiente tabla enumera las principales, junto con las versiones utilizadas:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[laravel/framework]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">el framework: enrutamiento, middleware, controladores, vistas (<i>[Blade]</i>), validación, sesión, caché, autenticación, traducción, <i>[Eloquent]</i>...</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">13.33.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[symfony/*]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">los componentes de <i>[Symfony]</i> sobre los que está construido <i>[Laravel] </i>(solicitudes y respuestas HTTP, enrutamiento, consola), que se instalan junto con él</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">8.1</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[nesbot/carbon]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">fechas (p. ej., 12), se instala con <i>[Laravel]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">3.14.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[brick/math]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">números decimales exactos (ejemplo 06), se instala con <i>[Laravel]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">1.0.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[firebase/php-jwt]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">tokens JWT (sección sobre autenticación)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">7.2.0</div></td></tr></table>
+
+<p><em>[Laravel]</em> se instala normalmente creando un proyecto completo con el comando:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>composer create-project laravel/laravel my-project
+</code></pre></div></td></tr></table></div>
+<p><em>[Composer]</em> descarga entonces el <strong>esqueleto</strong> de una aplicación <em>[Laravel]</em> (unos cincuenta archivos y carpetas: configuración, proveedores de servicios, migraciones, pruebas, herramientas de compilación de <em>[JavaScript]</em>...), luego sus bibliotecas, y crea una clave de cifrado. Así se inicia un proyecto real. Con fines de aprendizaje, este esqueleto tiene un inconveniente: contiene muchos archivos cuyo propósito aún no se comprende. Por eso los ejemplos de este documento parten del otro extremo: el Ejemplo 01 es la aplicación <em>[Laravel]</em> más pequeña posible, y cada ejemplo agrega solo los archivos que necesita. El caso de estudio final tiene la estructura de una aplicación <em>[Laravel]</em> estándar.</p>
+<h2 id="13-ejecutar-el-caso-de-estudio">1.3. <span style="color: #2e74b5">Ejecutar el caso de estudio</span></h2>
+<h3 id="131-instalacion-de-laragon">1.3.1. <span style="color: #4f81bd">Instalación de Laragon</span></h3>
+<p>El caso de estudio requiere un SGBD, MySQL, un intérprete de PHP, y el instalador de paquetes de PHP [composer]. Laragon puede proporcionar todo esto y más. En septiembre de 2026, Laragon está disponible en la URL <em><mark style="background-color: #fff5ce">[Download Laragon – Fast &amp; Modern Dev Environment ]</mark></em>. Laragon incluye herramientas que permiten instalar un servidor PHP y el SGBD <em><mark style="background-color: #fff5ce">[MySQL]</mark></em>:</p>
+<p><img src="images/10000000000006440000030C86481A8B.png" width="643" height="312" style="width:17cm;height:8.266cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006440000030C86481A8B.png" /></p>
+<ul>
+<li>en [1], un servidor web Apache;</li>
+<li>en [2], el SGBD <em><mark style="background-color: #fff5ce">[MySQL]</mark></em>;</li>
+<li>en [3], una herramienta de mensajería que no utilizaremos;</li>
+<li>[4] inicia todos los servicios (Apache, <em><mark style="background-color: #fff5ce">[MySQL]</mark></em>, MailPit);</li>
+<li>[5] muestra la página web de la URL <em><mark style="background-color: #fff5ce">[http://localhost]</mark></em>. De forma predeterminada, esta URL hace referencia a la carpeta &lt;laragon-install&gt;\www, donde &lt;laragon-install&gt; es la carpeta de instalación de Laragon;</li>
+<li>en [6], inicia la herramienta HeidiSQL, que permite administrar bases de datos MySQL. Usaremos esta herramienta para crear la base de datos que utiliza la aplicación RdvMedecins;</li>
+<li>en [7], abre un terminal; todos los binarios necesarios de Laragon están en el PATH;</li>
+<li>en [8], abre una ventana del Explorador de Windows en la carpeta asociada con la URL <em><mark style="background-color: #fff5ce">[http://localhost]</mark></em>;</li>
+</ul>
+<p>La carpeta de instalación de Laragon contiene los siguientes elementos:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002DB00000324CA05B23E.png" width="314" height="345" style="display:inline-block; margin:4px;width:8.306cm;height:9.133cm;" class="odt-zoomable" data-zoom-src="images/10000000000002DB00000324CA05B23E.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>En [1], la carpeta <em><mark style="background-color: #fff5ce">[bin]</mark></em> contiene numerosas aplicaciones:</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000329000004CE02139058.png" width="404" height="615" style="display:inline-block; margin:4px;width:10.7cm;height:16.27cm;" class="odt-zoomable" data-zoom-src="images/1000000000000329000004CE02139058.png" /></td></tr></table>
+
+<ul>
+<li>en [1], el servidor web Apache;</li>
+<li>en [2], un terminal de línea de comandos;</li>
+<li>en [3], un cliente <em><mark style="background-color: #fff5ce">[git]</mark></em> que permite administrar las diferentes versiones de un proyecto;</li>
+<li>en [4], un administrador de bases de datos;</li>
+<li>en [5], un administrador de correo;</li>
+<li>en [6], el SGBD <em><mark style="background-color: #fff5ce">[MySQL]</mark></em>;</li>
+<li>[7], otro servidor web;</li>
+<li>en [8], <em><mark style="background-color: #fff5ce">[node.js] </mark></em>para ejecutar scripts de JavaScript;</li>
+<li>[9], un editor de texto;</li>
+<li>[10], el intérprete de PHP;</li>
+<li>[11], el intérprete de <em><mark style="background-color: #fff5ce">[Python]</mark></em>;</li>
+<li>[12], un servidor de caché;</li>
+</ul>
+<p>Laragon incluye un entorno de desarrollo integral. En este curso, usaremos:</p>
+<ul>
+<li>el SGBD <em><mark style="background-color: #fff5ce">[MySQL], </mark></em>[6], y la herramienta <em><mark style="background-color: #fff5ce">[heidisql] </mark></em>para la administración gráfica;</li>
+<li>el intérprete de PHP 8.5;</li>
+<li>el instalador de paquetes [composer];</li>
+</ul>
+<p>El README del caso de estudio indica que debe ingresar los siguientes comandos en un terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>composer install
+</code></pre></div>
+<p>para instalar los paquetes de PHP necesarios para los ejemplos y el caso de estudio.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>php -S localhost:8000 -t public
+</code></pre></div>
+<p>para ejecutar uno de los ejemplos o el caso de estudio. Si usa un terminal [PowerShell] dentro de VSCode, se encontrará con el siguiente problema: ni [composer] ni [php] están presentes en el directorio PATH de la máquina Windows después de instalar Laragon. Por lo tanto, estos comandos no serán reconocidos en un terminal de VSCode.</p>
+<p>Para incluir [composer] y [php] en el PATH de la máquina Windows, abra un terminal de PowerShell en modo [administrator] y luego escriba los siguientes comandos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[Environment]::SetEnvironmentVariable("Path",[Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\laragon\bin\composer","Machine")
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[Environment]::SetEnvironmentVariable("Path",[Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\laragon\bin\php\php-8.5.11-nts-Win32-vs17-x64","Machine")
+</code></pre></div>
+<p>Ajuste las dos rutas resaltadas según su entorno.</p>
+<p>Deberá reiniciar VSCode para que estos cambios surtan efecto.</p>
+<p>Para crear la base de datos <em><mark style="background-color: #fff5ce">[MySQL]</mark></em> necesaria para el caso de estudio, proceda de la siguiente manera:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000006440000030C352A3F89.png" width="503" height="244" style="display:inline-block; margin:4px;width:13.301cm;height:6.468cm;" class="odt-zoomable" data-zoom-src="images/10000000000006440000030C352A3F89.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>En [1], todos los servicios deben estar iniciados;</li>
+<li>en [2], la opción <em><mark style="background-color: #fff5ce">[Database]</mark></em> permite administrar la base de datos;</li>
+</ul>
+<p>La opción <em><mark style="background-color: #fff5ce">[Database]</mark></em> inicia una utilidad llamada HeidiSQL:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000008D2000003C91FBD37B4.png" width="621" height="266" style="display:inline-block; margin:4px;width:16.431cm;height:7.05cm;" class="odt-zoomable" data-zoom-src="images/10000000000008D2000003C91FBD37B4.png" /></td></tr></table>
+
+<ul>
+<li>En [1], puede seleccionar diversas opciones de SGBD. El valor predeterminado es el SGBD MySQL. Es aceptable;</li>
+<li>en [2], inicia sesión en HeidiSQL;</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003FD0000018A35CBA47C.png" width="357" height="138" style="display:inline-block; margin:4px;width:9.449cm;height:3.649cm;" class="odt-zoomable" data-zoom-src="images/10000000000003FD0000018A35CBA47C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002A4000001C70316A390.png" width="237" height="159" style="display:inline-block; margin:4px;width:6.26cm;height:4.21cm;" class="odt-zoomable" data-zoom-src="images/10000000000002A4000001C70316A390.png" /></td></tr></table>
+
+<ul>
+<li>En [1-2], ejecute el archivo SQL y luego seleccione el archivo <em><mark style="background-color: #fff5ce">[dbrdvmedecins2.sql]</mark></em>, que encontrará en la carpeta [laravel-sept-2026/rdvmedecins2-laravel/database]:</li>
+</ul>
+<p><img src="images/10000000000001D7000001F897B5F6F5.png" width="198" height="212" style="width:5.226cm;height:5.6cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001D7000001F897B5F6F5.png" /></p>
+<p>La ejecución del archivo [3] creará la base de datos <em><mark style="background-color: #fff5ce">[dbrdvmedecins2]</mark></em> que utiliza el caso de estudio. Para verla, ejecute F5 dentro de HeidiSQL para actualizar la pantalla:</p>
+<p><strong>Nota del editor</strong>: Las siguientes capturas de pantalla muestran una base de datos llamada [dbrdvmedecins], mientras que la base de datos del caso de estudio se llama [dbrdvmedecins2]. Las dos bases de datos son prácticamente idénticas, por lo que consideramos innecesario tomar nuevas capturas.</p>
+<p><strong>Fin de la nota</strong></p>
+<p><img src="images/10000000000002A50000031EFB250513.png" width="213" height="250" style="width:5.639cm;height:6.609cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002A50000031EFB250513.png" /></p>
+<p>Se ha creado la base de datos <em><mark style="background-color: #fff5ce">[dbrdvmedecins] </mark></em>. Este es su contenido:</p>
+<p><img src="images/100000000000053F00000271DC17B512.png" width="602" height="280" style="width:15.921cm;height:7.408cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000053F00000271DC17B512.png" /></p>
+<ul>
+<li>en [1-3], la tabla <em><mark style="background-color: #fff5ce">[clients]</mark></em>;<ul>
+<li><em><mark style="background-color: #fff5ce">[id] </mark></em>es la clave primaria de la tabla;</li>
+<li><em><mark style="background-color: #fff5ce">[version] </mark></em>es el número de versión de la fila. Este número se incrementa cada vez que se modifica la fila;</li>
+<li><em><mark style="background-color: #fff5ce">[titre, nom, prenom] </mark></em>identifica a la persona;</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/100000000000052A0000026BD3179386.png" width="602" height="282" style="width:15.921cm;height:7.454cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000052A0000026BD3179386.png" /></p>
+<ul>
+<li>en [1-3], la tabla <em><mark style="background-color: #fff5ce">[medecins]</mark></em>;<ul>
+<li><em><mark style="background-color: #fff5ce">[id] </mark></em>es la clave primaria de la tabla;</li>
+<li><em><mark style="background-color: #fff5ce">[version] </mark></em>es el número de versión de la fila;</li>
+<li><em><mark style="background-color: #fff5ce">[titre, nom, prenom] </mark></em>identifica a la persona;</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/10000000000005FE000002C6FB6943F4.png" width="602" height="278" style="width:15.921cm;height:7.368cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005FE000002C6FB6943F4.png" /></p>
+<ul>
+<li>En [1-3], la tabla de los intervalos horarios de citas de los médicos:<ul>
+<li><em><mark style="background-color: #fff5ce">[id]</mark></em>: clave primaria;</li>
+<li><em><mark style="background-color: #fff5ce">[version]</mark></em>: número de versión de la fila;</li>
+<li><em><mark style="background-color: #fff5ce">[id-medecin]</mark></em>: clave externa que hace referencia a la clave primaria del médico;</li>
+<li><em><mark style="background-color: #fff5ce">[hdebut, mdebut]</mark></em>: hora y minutos del inicio de la cita. Así, <em><mark style="background-color: #fff5ce">[8,20] </mark></em>significa 8:20 a. m.</li>
+<li><em><mark style="background-color: #fff5ce">[hfin, mfin]</mark></em>: hora y minutos del final de la consulta. </li>
+</ul>
+</li>
+</ul>
+<p><img src="images/10000000000005EB0000024E23D6EF19.png" width="602" height="234" style="width:15.921cm;height:6.198cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005EB0000024E23D6EF19.png" /></p>
+<ul>
+<li>En [1-3], la tabla <em><mark style="background-color: #fff5ce">[rv]</mark></em> de citas agendadas;<ul>
+<li><em><mark style="background-color: #fff5ce">[id]</mark></em>: clave primaria;</li>
+<li><em><mark style="background-color: #fff5ce">[version]</mark></em>: número de versión;</li>
+<li><em><mark style="background-color: #fff5ce">[jour]</mark></em>: fecha de la cita;</li>
+<li><em><mark style="background-color: #fff5ce">[id_creneau]</mark></em>: clave externa que hace referencia a la clave primaria del intervalo horario de la cita. Como un intervalo horario está vinculado a un médico, sabemos qué médico atiende esta cita;</li>
+<li><em><mark style="background-color: #fff5ce">[id_client]</mark></em>: clave externa al número (clave primaria) del paciente que asiste a la cita;</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/100000000000066300000266A61EA136.png" width="602" height="226" style="width:15.921cm;height:5.978cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000066300000266A61EA136.png" /></p>
+<ul>
+<li>en [1-3], la tabla <em><mark style="background-color: #fff5ce">[users] </mark></em>enumera los usuarios autorizados a usar la aplicación;<ul>
+<li><em><mark style="background-color: #fff5ce">[id, version]</mark></em>: clave primaria, número de versión;</li>
+<li><em><mark style="background-color: #fff5ce">[login, password]</mark></em>: credenciales del usuario;</li>
+<li><em><mark style="background-color: #fff5ce">[nom]</mark></em>: nombre del usuario;</li>
+<li><em><mark style="background-color: #fff5ce">[role]</mark></em>: el rol del usuario. <em><mark style="background-color: #fff5ce">[ADMIN] </mark></em>tiene todos los derechos de acceso. <em><mark style="background-color: #fff5ce">[USER] </mark></em>tiene acceso de solo lectura. Este usuario puede ver la agenda de un médico, pero no puede agendar ni cancelar una cita;</li>
+</ul>
+</li>
+</ul>
+<h3 id="132-ejecucion-del-caso-de-estudio">1.3.2. <span style="color: #4f81bd">Ejecución del caso de estudio</span></h3>
+<p><strong>Nota del revisor</strong>: Aconsejo al lector ejecutar de inmediato el caso de estudio como se describe a continuación. Una vez que comprenda bien el propósito de esta aplicación de agenda de citas, pida a su IA favorita que modifique la aplicación de la siguiente manera: a partir de ahora, cada médico podrá:</p>
+<ul>
+<li>definir sus propios intervalos de citas entre dos fechas. Esto le permitirá ajustar su agenda según sea necesario;</li>
+<li>quitar ciertos intervalos horarios del calendario en un día determinado, por ejemplo, si no está disponible por motivos personales;</li>
+</ul>
+<p>La modificación no es sencilla porque implica un cambio en la estructura de la base de datos. Pida a la IA que le proporcione el nuevo código de la aplicación y el script SQL para crear la nueva base de datos. Para ello, deberá entregarle el archivo ZIP con el proyecto completo, así como el script SQL de la base de datos anterior.</p>
+<p>Además, no he revisado el curso creado por <strong>Claude</strong>. Él ya había producido los cursos [NestJS], [ASP.NET Core MVC], [Spring MVC] y [Flask], todos perfectos. Supuse que lo mismo ocurría con este. Si tiene problemas para entender algo, la solución es siempre la misma: pida a su IA favorita que le explique lo que no entiende. <strong>Claude</strong>, por ejemplo, es muy bueno para esto. Es posible que deba “subirle” el ejemplo que no entiende.</p>
+<p><strong>Fin de la nota</strong>.</p>
+<p>El caso de estudio al final de este documento es una aplicación completa. Es probable que los lectores quieran verla en acción antes de profundizar en los detalles del framework: así se ejecuta. Se encuentra en la carpeta <strong><em>[rdvmedecins2-laravel]</em></strong>, junto a la carpeta <strong><em>[examples]</em></strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>laravel-sept-2026/
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>├── examples/
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>└── rdvmedecins2-laravel/
+</code></pre></div></td></tr></table></div>
+<p>Debe tener instalados <em>[PHP]</em> (versión 8.4 o posterior), <em>[Composer]</em>, <em>[Visual Studio Code]</em> y <em>[MySQL]</em> (consulte los apéndices). Luego:</p>
+<ul>
+<li><strong>Cree la base de datos</strong> <strong><em>[dbrdvmedecins2]</em></strong>  ejecutando el script <strong><em>[rdvmedecins2-laravel/database/dbrdvmedecins2.sql]</em></strong>. Con <em>[Laragon]</em>, abra la herramienta <em>[HeidiSQL]</em> (botón Database) y luego ejecute el script desde el menú File / Run SQL. En la línea de comandos, desde la carpeta <strong><em>[rdvmedecins2-laravel]</em></strong>:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>mysql -u root &lt; database/dbrdvmedecins2.sql
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong>Abra la carpeta</strong> <strong><em>[rdvmedecins2-laravel]</em></strong>  en <em>[Visual Studio Code]</em> (menú File / Open Folder) y luego abra un terminal (menú Terminal / New Terminal);</li>
+<li><strong>Instale las</strong> bibliotecas <strong>de la aplicación</strong>: <em>[Composer]</em> lee el archivo <strong><em>[composer.json]</em></strong>, descarga <em>[Laravel]</em> y las demás bibliotecas, y las coloca en la carpeta <strong><em>[vendor]</em></strong> de la aplicación (tarda unas decenas de segundos):</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>composer install
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong>Verifique la conexión a la base de datos</strong>. La aplicación se conecta a <em>[MySQL]</em> en <strong><em>[127.0.0.1]</em></strong>, puerto 3306, con el usuario <strong><em>[root]</em></strong> <strong>sin contraseña</strong> (la configuración predeterminada de <em>[Laragon]</em>). Si su cuenta <strong><em>[root]</em></strong> tiene contraseña, ingrésela en el archivo <strong><em>[.env]</em></strong> de la aplicación, en la línea <strong><em>[DB_PASSWORD=]</em></strong> (por ejemplo, <strong><em>[DB_PASSWORD=myPassword]</em></strong>);</li>
+<li><strong>Ejecute la aplicación</strong>:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>php artisan serve --port=8081
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><em>[Laravel]</em> muestra:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>   INFO  Server running on [http://127.0.0.1:8081].
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>  Press Ctrl+C to stop the server
+</code></pre></div></td></tr></table></div>
+<p>El servidor de desarrollo escucha en el puerto 8081 en la dirección <strong><em>[127.0.0.1]</em></strong> (es decir, <strong><em>[localhost]</em></strong>). Cada solicitud recibida se registrará en la consola, junto con los comandos SQL que envía a la base de datos;</p>
+<ul>
+<li><strong>Abra la dirección</strong> <strong><em>[http://localhost:8081]</em></strong> en un navegador:</li>
+</ul>
+<p><img src="images/10000000000003EA000003B5F5FDBA41.png" width="605" height="573" style="width:16cm;height:15.154cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003EA000003B5F5FDBA41.png" /></p>
+<ul>
+<li>Inicie sesión con una de las cuentas de demostración, cuya contraseña es igual al nombre de usuario: <strong><em>[admin]</em></strong> (administrador), <strong><em>[pelissier]</em></strong>, <strong><em>[tatou]</em></strong>, <strong><em>[dupont]</em></strong> (médicos), <strong><em>[martin]</em></strong>, <strong><em>[durand]</em></strong>, <strong><em>[bistrou]</em></strong>, <strong><em>[german]</em></strong> (pacientes). También debe ingresar los caracteres de la imagen, en mayúsculas o minúsculas.</li>
+</ul>
+<p>Una aplicación <em>[PHP]</em> no falla al leer la base de datos al iniciarse: un error de conexión solo aparece en la primera página que consulta la base de datos, es decir, en el momento de la conexión. <em>[Laravel]</em> muestra entonces su página de depuración y registra el error en el archivo <strong><em>[storage/logs/laravel.log]</em></strong>. Si el mensaje es <strong><em>[SQLSTATE[HY000] [2002] Connection refused]</em></strong>, significa que <em>[MySQL]</em> no se ha iniciado; con <strong><em>[[1045] Access denied for user &#x27;root&#x27;@&#x27;localhost&#x27;]</em></strong>, significa que la contraseña es incorrecta; con <strong><em>[[1049] Unknown database &#x27;dbrdvmedecins2&#x27;]</em></strong>, significa que no se ejecutó el script SQL; con <strong><em>[could not find driver]</em></strong>, que la extensión <strong><em>[pdo_mysql]</em></strong> de <em>[PHP]</em> no está habilitada. Si el propio comando <strong><em>[php artisan serve]</em></strong> falla con el mensaje <strong><em>[Failed opening required &#x27;.../vendor/autoload.php&#x27;]</em></strong>, significa que <strong><em>[composer install]</em></strong> no se ejecutó; con <strong><em>[Failed to listen on 127.0.0.1:8081 (reason: Address already in use)]</em></strong>, significa que el puerto 8081 ya está en uso (por otra versión de la aplicación, por ejemplo). El archivo <strong><em>[README.md]</em></strong> de la aplicación describe otros escenarios. Detenga la aplicación con <strong><em>[Ctrl-C]</em></strong> en el terminal.</p>
+<p>El caso de estudio al final del documento describe cómo usar la aplicación y luego explica cada uno de sus archivos.</p>
+<h2 id="14-ejemplos">1.4. <span style="color: #2e74b5">Ejemplos</span></h2>
+<p>Los ejemplos se encuentran en la carpeta <strong><em>[examples]</em></strong>, con una subcarpeta por ejemplo:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span>
+<span class="normal"><a href="#__codelineno-10-8">8</a></span>
+<span class="normal"><a href="#__codelineno-10-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>examples/
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>├── 01-structure/
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>├── 02-routing/
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>├── ...
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>├── 28-layers/
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>├── common/
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>│   ├── bootstrap/
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>│   └── bootstrap.php
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>└── composer.json
+</code></pre></div></td></tr></table></div>
+<p>Cada ejemplo es una pequeña aplicación (<em>[Laravel]</em>) que funciona por sí sola. Todos los ejemplos usan las mismas bibliotecas, descritas en el archivo <strong><em>[examples/composer.json]</em></strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"course/laravel-examples"</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The 28 examples of the course [Step-by-step introduction to the Laravel web framework]: a single vendor folder, shared by all the examples"</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project"</span><span class="p">,</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">    </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">        </span><span class="nt">"php"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.4"</span><span class="p">,</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">        </span><span class="nt">"ext-intl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">        </span><span class="nt">"ext-pdo_mysql"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">        </span><span class="nt">"laravel/framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^13.33"</span><span class="p">,</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">        </span><span class="nt">"firebase/php-jwt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^7.0"</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">        </span><span class="nt">"optimize-autoloader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="w">        </span><span class="nt">"sort-packages"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">    </span><span class="nt">"minimum-stability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">    </span><span class="nt">"prefer-stable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>Líneas 6–12: lo que requieren los ejemplos: <em>[PHP]</em> 8.4 o posterior, las extensiones <strong><em>[intl]</em></strong> (formato de números según el idioma, Ejemplo 16) y <strong><em>[pdo_mysql]</em></strong> (acceso a <em>[MySQL]</em>, ejemplo 28), <em>[Laravel],</em> y <em>[firebase/php-jwt]</em> (los tokens JWT, ejemplo 25). <strong><em>[^13.33]</em></strong> significa “versión 13.33, o una versión más reciente de la versión mayor 13”;</li>
+<li>las demás líneas configuran el comportamiento de <em>[Composer]</em>: el cargador de clases está optimizado, las bibliotecas se ordenan por nombre y solo se aceptan versiones estables.</li>
+</ul>
+<p>Para ejecutar los ejemplos, primero instale sus bibliotecas —una vez y para siempre— en una ventana de terminal abierta en la carpeta <strong><em>[examples]</em></strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>composer install
+</code></pre></div></td></tr></table></div>
+<p><em>[Composer]</em> crea la carpeta <strong><em>[examples/vendor]</em></strong>, <strong>compartida</strong> por los 28 ejemplos, y el archivo <strong><em>[composer.lock]</em></strong>, que registra las versiones exactas instaladas (consulte el caso de estudio). La carpeta <strong><em>[common]</em></strong> contiene el framework CSS, <em>[Bootstrap]</em> (<strong><em>[common/bootstrap]</em></strong>), compartido por los ejemplos que dan formato a sus páginas (a partir del Ejemplo 15), y la ruta que lo sirve (<strong><em>[common/bootstrap.php]</em></strong>; consulte el Ejemplo 15).</p>
+<p>Casi todos los ejemplos tienen la misma estructura —la de una aplicación <em>[Laravel]</em> estándar, reducida a lo esencial. Por ejemplo, la del Ejemplo 13:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span>
+<span class="normal"><a href="#__codelineno-13-21">21</a></span>
+<span class="normal"><a href="#__codelineno-13-22">22</a></span>
+<span class="normal"><a href="#__codelineno-13-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>13-first-view/
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>├── app/
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>│   ├── Http/
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>│   │   └── Controllers/
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>│   │       └── ViewsController.php
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>│   └── Models/
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>│       └── PageModel.php
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a>├── bootstrap/
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>│   ├── app.php
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a>│   └── cache/
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a>├── public/
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a>│   └── index.php
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a>├── resources/
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a>│   └── views/
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a>│       └── views/
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a>│           ├── unknown.blade.php
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a>│           └── index.blade.php
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a>├── routes/
+<a id="__codelineno-13-19" name="__codelineno-13-19"></a>│   └── web.php
+<a id="__codelineno-13-20" name="__codelineno-13-20"></a>├── storage/
+<a id="__codelineno-13-21" name="__codelineno-13-21"></a>├── .env
+<a id="__codelineno-13-22" name="__codelineno-13-22"></a>├── artisan
+<a id="__codelineno-13-23" name="__codelineno-13-23"></a>└── composer.json
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong><em>[public/index.php]</em></strong>: el punto de entrada de todas las solicitudes; <strong><em>[bootstrap/app.php]</em></strong>: la estructura de la aplicación; <strong><em>[artisan]</em></strong>: la herramienta de línea de comandos de <em>[Laravel]</em> (Ejemplo 01);</li>
+<li><strong><em>[routes/web.php]</em></strong>: las rutas, que asocian las URL con las acciones (Ejemplo 02);</li>
+<li><strong><em>[app]</em></strong>: las clases de la aplicación: controladores (<strong><em>[app/Http/Controllers]</em></strong>), modelos, servicios...;</li>
+<li><strong><em>[resources/views]</em></strong>: las vistas <em>[Blade]</em> (a partir del capítulo sobre vistas);</li>
+<li><strong><em>[.env]</em></strong>: la configuración específica del ejemplo (Ejemplo 01); <strong><em>[storage]</em></strong> y <strong><em>[bootstrap/cache]</em></strong>: los archivos que <em>[Laravel]</em> escribe por sí mismo (vistas compiladas, caché, sesiones, registro).</li>
+</ul>
+<p>Para ejecutar un ejemplo, abra un terminal en su carpeta (en <em>[Visual Studio Code]</em>: haga clic derecho en la carpeta del ejemplo y seleccione “Open in the built-in terminal”) y escriba:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>php artisan serve
+</code></pre></div></td></tr></table></div>
+<p>Todos los ejemplos escuchan en el puerto 8000: solo se puede ejecutar uno a la vez (o hay que cambiar el puerto: <strong><em>[php artisan serve --port=8001]</em></strong>). Detenga el servidor ingresando <strong><em>[Ctrl-C]</em></strong> en el terminal. No es necesario reiniciar el servidor después de modificar un archivo <em>[PHP]</em> o una vista: el cambio surte efecto con la siguiente solicitud (ejemplo 01).</p>
+<p>Al abrir la carpeta <strong><em>[examples]</em></strong> en <em>[Visual Studio Code]</em>, la extensión <em>[PHP Intelephense]</em> analiza todos los archivos, incluidos los de <em>[Laravel]</em> en la carpeta <strong><em>[vendor]</em></strong>: en cada archivo, puede aprovechar la finalización de código, la navegación a la definición de una clase o método (tecla <strong><em>[F12]</em></strong>) y el reporte de errores. Como todos los ejemplos tienen sus clases en el espacio de nombres <strong><em>[App]</em></strong>, la extensión puede señalar clases “duplicadas”: esto no afecta la ejecución, ya que cada ejemplo se ejecuta de forma independiente. Para evitar estas advertencias, basta con abrir la carpeta del propio ejemplo.</p>
+<h2 id="15-contenido-del-documento">1.5. <span style="color: #2e74b5">Contenido del documento</span></h2>
+<p>El documento se desarrolla de la siguiente manera:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Acciones, enrutamiento, respuestas</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">De la solicitud a la acción: rutas, controladores, respuestas, redirecciones, servicios compartidos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">01 a 06</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">El modelo de acción</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Parámetros de la solicitud: enlace (binding), conversión, validación, formularios POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">07 a 12</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">La vista y su plantilla</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Blade]</i>, plantilla, componentes, formularios, validación, PRG, protección anti-CSRF</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">13 a 21</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Internacionalización</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Una aplicación en francés y en inglés</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">22</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Ámbito de los datos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">solicitud, sesión, caché, cookies</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">23</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">El ciclo de vida de una solicitud</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">middleware, enlace de parámetros, manejadores de excepciones</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">24</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Autenticación y autorización</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">JWT en una cookie, guardias, roles, CAPTCHA, límites de intentos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">25–27</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Arquitectura en capas y acceso a datos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Web / Negocio / DAO con <i>[Eloquent] </i>y <i>[MySQL]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">28</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Caso de estudio</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">La aplicación RdvMedecins, explicada archivo por archivo</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">-</div></td></tr></table>
+
+<p>Cada ejemplo introduce solo unos pocos conceptos nuevos, y los capítulos se apoyan unos en otros: lo mejor es leerlos en orden. El caso de estudio, por su parte, recurre a <strong>todos</strong> los conceptos de los capítulos anteriores: siempre que corresponde, su comentario remite al ejemplo donde se introdujo el concepto. Los apéndices describen cómo instalar las herramientas: <em>[PHP]</em>, <em>[Composer]</em>, <em>[Visual Studio Code]</em> y sus extensiones, <em>[MySQL]</em> junto con <em>[Laragon]</em>, y <em>[curl]</em>.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este tutorial, escrito por la IA <strong>Claude</strong> de Anthropic a petición de <strong>Serge Tahé</strong>, se pone a disposición del público bajo los términos de la
+        <em>licencia Creative Commons Atribución – No Comercial –
+        Compartir Igual 3.0 No adaptada</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

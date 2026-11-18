@@ -1,0 +1,1256 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introducción paso a paso al framework web [Laravel]">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/ales-laravel-sept-2026/ambitos-de-los-datos.html">
+      
+      
+        <link rel="prev" href="internacionalizacion.html">
+      
+      
+        <link rel="next" href="el-ciclo-de-vida-de-una-solicitud.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>6. Ámbitos de los datos - Introducción paso a paso al framework web [Laravel]</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introducción paso a paso al framework web [Laravel]";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-ambitos-de-los-datos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introducción paso a paso al framework web [Laravel]" class="md-header__button md-logo" aria-label="Introducción paso a paso al framework web [Laravel]" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introducción paso a paso al framework web [Laravel]
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Ámbitos de los datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/ales-laravel-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introducción paso a paso al framework web [Laravel]" class="md-nav__button md-logo" aria-label="Introducción paso a paso al framework web [Laravel]" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introducción paso a paso al framework web [Laravel]
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/ales-laravel-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bienvenido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduccion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="acciones-enrutamiento-respuestas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Acciones, enrutamiento, respuestas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="el-modelo-de-la-accion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. El modelo de la acción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="la-vista-y-su-modelo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. La vista y su modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="internacionalizacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Internacionalización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Ámbitos de los datos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ambitos-de-los-datos.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Ámbitos de los datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-ejemplo-23-ambitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Ejemplo 23: ámbitos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1. Ejemplo 23: ámbitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-los-objetos-appservicescounterservicephp-y-requestinfophp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1. Los objetos: app/Services/CounterService.php y RequestInfo.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-configuracion-bootstrapappphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2. Configuración: bootstrap/app.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-el-controlador-apphttpcontrollersscopescontrollerphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3. El controlador: app/Http/Controllers/ScopesController.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-la-vista-resourcesviewsscopesscopesbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.4. La vista: resources/views/scopes/scopes.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#615-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.5. Ejecución
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="el-ciclo-de-vida-de-una-solicitud.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. El ciclo de vida de una solicitud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="autenticacion-y-autorizacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Autenticación y autorización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arquitectura-en-capas-y-acceso-a-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Arquitectura en capas y acceso a datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion-provisional.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Conclusión provisional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="caso-de-estudio-la-aplicacion-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Caso de estudio: la aplicación RdvMedecins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Conclusión
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apendices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Apéndices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6-ambitos-de-los-datos">6. <span style="color: #2e74b5">Ámbitos de los datos</span></h1>
+<p>Una aplicación web atiende a muchos usuarios a la vez, y cada usuario realiza numerosas solicitudes. Por lo tanto, los datos pueden compartirse en varios niveles, conocidos como su <strong>ámbito</strong>:</p>
+<ul>
+<li><strong>aplicación</strong>: los datos son compartidos por todos los usuarios durante toda la vida de la aplicación (por ejemplo, la lista de médicos);</li>
+<li><strong>solicitud</strong>: los datos existen solo mientras dura una solicitud (el modelo de una vista, el usuario conectado tal como se identifica en esa solicitud);</li>
+<li><strong>sesión</strong>: los datos son específicos de un usuario y deben persistir de una solicitud a la siguiente (el idioma seleccionado, un carrito de compras);</li>
+<li><strong>cliente</strong>: datos almacenados en el propio navegador, en una cookie.</li>
+</ul>
+<p>En <em>[PHP]</em>, estos ámbitos se comportan de una manera particular porque la aplicación se reconstruye con cada solicitud (ejemplo 01): <strong>nada sobrevive en memoria de una solicitud a la siguiente</strong>. Por lo tanto, todo dato que deba durar más que una sola solicitud se almacena fuera de <em>[PHP]</em>: en el caché, en una base de datos, en archivos o del lado del cliente. Esta es la llamada arquitectura «shared-nothing» (sin nada compartido): cada solicitud es procesada de forma aislada por un proceso que no comparte nada con los que procesan otras solicitudes. Este enfoque tiene ventajas importantes: un error afecta solo a una solicitud, ningún dato se filtra de un usuario a otro y se pueden ejecutar varios servidores idénticos detrás de un balanceador de carga, siempre que compartan el mismo caché y la misma base de datos.</p>
+<p>En <em>[Laravel]</em>, cada ámbito tiene su propio contenedor:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Ámbito</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Contenedor</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Duración</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">aplicación</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">el <b>caché </b>(<i><b>[Cache]</b></i> fachada, ejemplo 20) o la base de datos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">la duración seleccionada, o ilimitada</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">solicitud</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">los objetos del contenedor (un singleton existe solo para una solicitud), los atributos de la solicitud (ejemplo 12)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">el procesamiento de una solicitud</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">sesión</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">la <b>sesión </b>(<i><b>[$request-&gt;session()]</b></i>, <i><b>[session()]</b></i>), almacenada por el servidor y recuperada mediante una cookie</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Período de inactividad predeterminado de 2 horas (<i><b>[SESSION_LIFETIME]</b></i>)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">cliente</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una <b>cookie </b>(<i><b>[withCookie]</b></i>, ejemplo 22), cifrada de forma predeterminada</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">la duración especificada de la cookie</div></td></tr></table>
+
+<p>La sesión de <em>[Laravel]</em> es una sesión <strong>mantenida por el servidor</strong>, como las de <em>[Java]</em> (<strong><em>[JSESSIONID]</em></strong>) o la clásica de <em>[PHP]</em> (<strong><em>[PHPSESSID]</em></strong>): sus datos se almacenan en el servidor (un archivo por sesión, con la configuración de nuestros ejemplos) y el navegador solo conserva el identificador en una cookie cifrada (ejemplo 20). Esto difiere de <em>[Flask]</em>, cuya sesión completa se almacena en una cookie firmada del lado del cliente.</p>
+<h2 id="61-ejemplo-23-ambitos">6.1. <span style="color: #2e74b5">Ejemplo 23: ámbitos</span></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>23-scopes/
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>├── app/
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>│   ├── Http/
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>│   │   └── Controllers/
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>│   │       └── ScopesController.php
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>│   └── Services/
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>│       ├── CounterService.php
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>│       └── RequestInfo.php
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>├── resources/
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>│   └── views/
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>│       └── scopes/
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>│           └── scopes.blade.php
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>└── ...
+</code></pre></div></td></tr></table></div>
+<h3 id="611-los-objetos-appservicescounterservicephp-y-requestinfophp">6.1.1. <span style="color: #1f4d78">Los objetos: app/Services/CounterService.php y RequestInfo.php</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1">// app/Services/CounterService.php: alcance de APLICACIÓN, un contador compartido por</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1">// todas las solicitudes de todos los usuarios, almacenado en la caché (véase el ejemplo 20)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">namespace</span> <span class="nx">App\Services</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Cache</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="k">class</span> <span class="nc">CounterService</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="c1">// un número más bajo la clave [$key]; la caché "file" no incrementa un</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="c1">// número de forma atómica: un bloqueo protege la lectura y la escritura</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">next</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$key</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    <span class="p">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>        <span class="k">return</span> <span class="nx">Cache</span><span class="o">::</span><span class="na">lock</span><span class="p">(</span><span class="s2">"</span><span class="si">$key</span><span class="s2">-lock"</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">block</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>            <span class="nv">$value</span> <span class="o">=</span> <span class="nx">Cache</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>            <span class="nx">Cache</span><span class="o">::</span><span class="na">forever</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>            <span class="k">return</span> <span class="nv">$value</span><span class="p">;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>        <span class="p">});</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>    <span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">increment</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a>    <span class="p">{</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">next</span><span class="p">(</span><span class="s1">'visits'</span><span class="p">);</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>    <span class="p">}</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>Líneas 13–20: un contador de ámbito de aplicación: un número almacenado en el caché bajo una clave e incrementado en 1 en cada llamada. El caché ofrece un método <strong><em>[Cache::increment]</em></strong>, pero con el almacén «file» que se usa en nuestros ejemplos no es <strong>atómico</strong>: lee el valor, lo incrementa y luego lo escribe, y dos solicitudes simultáneas podrían leer el mismo valor, lo que causaría una visita perdida. Por ello, un bloqueo (ejemplo 20) protege tanto la lectura como la escritura. (Con un almacén como <em>[Redis]</em> o una base de datos, <strong><em>[Cache::increment]</em></strong> es atómico y el bloqueo es innecesario.) La función devuelve el valor del bloqueo, que es el mismo que el de la función que protege;</li>
+<li>líneas 22–25: el contador de visitas.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// app/Services/RequestInfo.php: alcance de SOLICITUD, la información de una solicitud</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">namespace</span> <span class="nx">App\Services</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="k">class</span> <span class="nc">RequestInfo</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="k">public</span> <span class="k">readonly</span> <span class="nx">int</span> <span class="nv">$number</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="k">public</span> <span class="k">readonly</span> <span class="nx">string</span> <span class="nv">$start</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="p">{</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>        <span class="c1">// un número por cada OBJETO creado, tomado de un contador compartido por todas las solicitudes</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">number</span> <span class="o">=</span> <span class="nx">CounterService</span><span class="o">::</span><span class="na">next</span><span class="p">(</span><span class="s1">'instances'</span><span class="p">);</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>        <span class="c1">// la hora, con sus milisegundos (v)</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">start</span> <span class="o">=</span> <span class="nx">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">'H:i:s.v'</span><span class="p">);</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>    <span class="p">}</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>líneas 8–10: propiedades declaradas como <strong><em>[readonly]</em></strong> una por una (en lugar de toda la clase): solo pueden asignarse una vez, mediante el constructor;</li>
+<li>líneas 12–18: información de ámbito de solicitud: un número, derivado de un contador compartido por todas las solicitudes (el contador de la clase anterior, con otra clave), y la hora de la solicitud. La función <strong><em>[now()]</em></strong> devuelve la hora actual como una fecha <em>[Carbon]</em>; el formato <strong><em>[v]</em></strong> especifica los milisegundos.</li>
+</ul>
+<h3 id="612-configuracion-bootstrapappphp">6.1.2. <span style="color: #1f4d78">Configuración: bootstrap/app.php</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">// bootstrap/app.php: la aplicación del ejemplo 23</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="k">use</span> <span class="nx">App\Services\CounterService</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="k">use</span> <span class="nx">App\Services\RequestInfo</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="k">use</span> <span class="nx">Illuminate\Foundation\Application</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="k">use</span> <span class="nx">Illuminate\Foundation\Configuration\Middleware</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">(</span><span class="k">require</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">'/../../vendor/autoload.php'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">addPsr4</span><span class="p">(</span><span class="s1">'App\\'</span><span class="p">,</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">'/../app/'</span><span class="p">);</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="k">return</span> <span class="nx">Application</span><span class="o">::</span><span class="na">configure</span><span class="p">(</span><span class="nx">basePath</span><span class="o">:</span> <span class="nb">dirname</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">))</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>    <span class="o">-&gt;</span><span class="na">withRouting</span><span class="p">(</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>        <span class="nx">web</span><span class="o">:</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">'/../routes/web.php'</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>        <span class="c1">// la ruta que sirve Bootstrap (véase el ejemplo 15)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>        <span class="nx">then</span><span class="o">:</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">require</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">'/../../common/bootstrap.php'</span><span class="p">)</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>    <span class="o">-&gt;</span><span class="na">withMiddleware</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nx">Middleware</span> <span class="nv">$middleware</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>        <span class="c1">// la cookie [myVisits] no está cifrada (las demás sí)</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>        <span class="nv">$middleware</span><span class="o">-&gt;</span><span class="na">encryptCookies</span><span class="p">(</span><span class="nx">except</span><span class="o">:</span> <span class="p">[</span><span class="s1">'myVisits'</span><span class="p">]);</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>    <span class="p">})</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>    <span class="o">-&gt;</span><span class="na">withExceptions</span><span class="p">()</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a>    <span class="c1">// un solo objeto de cada clase durante el procesamiento de una solicitud</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>    <span class="o">-&gt;</span><span class="na">withSingletons</span><span class="p">([</span><span class="nx">CounterService</span><span class="o">::</span><span class="na">class</span><span class="p">])</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>    <span class="o">-&gt;</span><span class="na">withScopedSingletons</span><span class="p">([</span><span class="nx">RequestInfo</span><span class="o">::</span><span class="na">class</span><span class="p">])</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>    <span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>Línea 18: la cookie <strong><em>[myVisits]</em></strong> no está cifrada; todas las demás sí lo están (ejemplo 22);</li>
+<li>Líneas 22–23: ambos servicios se registran en el contenedor. <strong><em>[withSingletons]</em></strong> (ejemplo 06): un único objeto, creado en la primera solicitud. <strong><em>[withScopedSingletons]</em></strong>: un único objeto <strong>por solicitud</strong>. En un entorno <em>[PHP]</em> estándar, ambos son equivalentes, ya que cada solicitud reconstruye la aplicación y su contenedor. La diferencia se hace evidente con <em>[Laravel Octane]</em>, un servidor de aplicaciones que mantiene la aplicación en memoria de una solicitud a la siguiente para mejorar el rendimiento: un singleton es compartido por todas las solicitudes, mientras que un singleton «con ámbito» se vuelve a crear para cada una. Declarar el ámbito deseado garantiza que el código sea correcto en ambos casos.</li>
+</ul>
+<h3 id="613-el-controlador-apphttpcontrollersscopescontrollerphp">6.1.3. <span style="color: #1f4d78">El controlador: app/Http/Controllers/ScopesController.php</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span>
+<span class="normal"><a href="#__codelineno-4-32">32</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1">// app/Http/Controllers/ScopesController.php: los cuatro alcances de datos</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="k">use</span> <span class="nx">App\Services\CounterService</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="k">use</span> <span class="nx">App\Services\RequestInfo</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="k">use</span> <span class="nx">Illuminate\Http\Response</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="k">class</span> <span class="nc">ScopesController</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="p">{</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>    <span class="c1">// el contenedor proporciona los dos objetos (véase bootstrap/app.php)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">display</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">CounterService</span> <span class="nv">$counter</span><span class="p">,</span> <span class="nx">RequestInfo</span> <span class="nv">$info</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>        <span class="c1">// APLICACIÓN: el contador compartido</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a>        <span class="nv">$total</span> <span class="o">=</span> <span class="nv">$counter</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">();</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>        <span class="c1">// SESIÓN: datos específicos de ESTE navegador, conservados por el SERVIDOR</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>        <span class="c1">// (un archivo de storage/framework/sessions), que se recupera gracias a la cookie de sesión</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>        <span class="nv">$sessionVisits</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">(</span><span class="s1">'visits'</span><span class="p">);</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>        <span class="c1">// CLIENTE: datos conservados por el NAVEGADOR en cookies,</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>        <span class="c1">// reenviadas al servidor con cada solicitud; una en texto claro, la otra cifrada</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a>        <span class="nv">$myVisits</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">cookie</span><span class="p">(</span><span class="s1">'myVisits'</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a>        <span class="nv">$myEncryptedVisits</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">cookie</span><span class="p">(</span><span class="s1">'myEncryptedVisits'</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a>        <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">view</span><span class="p">(</span><span class="s1">'scopes.scopes'</span><span class="p">,</span> <span class="p">[</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a>            <span class="s1">'total'</span> <span class="o">=&gt;</span> <span class="nv">$total</span><span class="p">,</span> <span class="s1">'instance'</span> <span class="o">=&gt;</span> <span class="nv">$info</span><span class="o">-&gt;</span><span class="na">number</span><span class="p">,</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a>            <span class="s1">'sessionVisits'</span> <span class="o">=&gt;</span> <span class="nv">$sessionVisits</span><span class="p">,</span> <span class="s1">'myVisits'</span> <span class="o">=&gt;</span> <span class="nv">$myVisits</span><span class="p">,</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>            <span class="s1">'myEncryptedVisits'</span> <span class="o">=&gt;</span> <span class="nv">$myEncryptedVisits</span><span class="p">,</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a>        <span class="p">])</span><span class="o">-&gt;</span><span class="na">withCookie</span><span class="p">(</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">'myVisits'</span><span class="p">,</span> <span class="nv">$myVisits</span><span class="p">))</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>            <span class="o">-&gt;</span><span class="na">withCookie</span><span class="p">(</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">'myEncryptedVisits'</span><span class="p">,</span> <span class="nv">$myEncryptedVisits</span><span class="p">));</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>    <span class="p">}</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>línea 14: la acción recibe la solicitud y los dos servicios, proporcionados por el contenedor;</li>
+<li>línea 17: el ámbito de aplicación;</li>
+<li>línea 20: el ámbito de sesión. <strong><em>[$request-&gt;session()]</em></strong> devuelve la sesión del usuario; su método <strong><em>[increment]</em></strong> incrementa en 1 el valor de una clave (o lo establece en 0 si no existe) y devuelve el nuevo valor. Un valor se lee con <strong><em>[get(&#x27;visits&#x27;)]</em></strong> y se escribe con <strong><em>[put(&#x27;visits&#x27;, 3)]</em></strong>; la función <strong><em>[session(&#x27;visits&#x27;)]</em></strong> es un atajo para la lectura. <em>[Laravel]</em> guarda la sesión al final de la solicitud (el middleware <strong><em>[StartSession]</em></strong> del grupo <strong><em>[web]</em></strong>);</li>
+<li>líneas 23–24: el ámbito de cliente, con dos cookies. Sus valores son cadenas proporcionadas por el navegador y, por lo tanto, pueden faltar o ser inválidos: la conversión <strong><em>[(int)]</em></strong> devuelve 0 para <strong><em>[null]</em></strong> o para un texto que no es un número;</li>
+<li>Líneas 25–30: para establecer una cookie se necesita el objeto de respuesta: <strong><em>[response()-&gt;view(...)]</em></strong> lo construye a partir de la vista (ejemplo 13) y luego <strong><em>[withCookie]</em></strong> le agrega las cookies. Sin un tiempo de expiración, una cookie dura hasta que se cierra el navegador (es una cookie «de sesión», según la definición de los navegadores).</li>
+</ul>
+<h3 id="614-la-vista-resourcesviewsscopesscopesbladephp">6.1.4. <span style="color: #1f4d78">La vista: resources/views/scopes/scopes.blade.php</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Scopes<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"{{ route('bootstrap', 'css/bootstrap.min.css') }}"</span><span class="p">&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container py-3"</span><span class="p">&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"h3"</span><span class="p">&gt;</span>The scopes of data<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>    {{-- @inject: un objeto solicitado al contenedor, desde la vista; durante la MISMA
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>         solicitud, es el mismo objeto que el de la acción --}}
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>    @inject('info', 'App\Services\RequestInfo')
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>application: {{ $total }} visit(s) to the site, all browsers combined<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>request: object no. {{ $instance }} (no. {{ $info-&gt;number }} in the view),
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>        request received at {{ $info-&gt;start }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>session: {{ $sessionVisits }} visit(s) from this browser ({{ session('visits') }} in the view)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>client: {{ $myVisits }} visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a>        {{ $myEncryptedVisits }} (encrypted cookie)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>Línea 13: la directiva <strong><em>[@inject]</em></strong> solicita un objeto al contenedor, desde la propia vista, y lo almacena en una variable (aquí, <strong><em>[$info]</em></strong>). Durante la misma solicitud, es el mismo objeto <strong><em>[RequestInfo]</em></strong> que el de la acción: la vista muestra su número, que debe ser el recibido de la acción;</li>
+<li>Línea 18: la sesión también es accesible en las vistas.</li>
+</ul>
+<h3 id="615-ejecucion">6.1.5. <span style="color: #1f4d78">Ejecución</span></h3>
+<p>Después de algunas visitas en un navegador:</p>
+<p><img src="images/10000000000002BE00000110F296D747.png" width="428" height="166" style="width:11.322cm;height:4.387cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE00000110F296D747.png" /></p>
+<p>Sigamos las solicitudes con <em>[curl]</em>, que actúa como un primer navegador al almacenar sus cookies en el archivo <strong><em>[a.txt]</em></strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>curl -i -c a.txt -b a.txt http://localhost:8000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>HTTP/1.1 200 OK
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>Set-Cookie: myVisits=1; path=/; httponly; samesite=lax
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>Set-Cookie: myEncryptedVisits=eyJpdiI6InFOdXY5QmhoSlNCTWx4Q0VmN1lDSUE9PSIsInZhbHVlIjoiNm1GckpjQ3JK...; path=/; httponly; samesite=lax
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>Set-Cookie: XSRF-TOKEN=eyJpdiI6Im5IcHgvN2RRWiswNEZkMFRrUHBkOEE9PSIsInZhbHVlIjoiMTk1eElxemZz...; expires=...; Max-Age=7200; path=/; samesite=lax
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>Set-Cookie: example23_session=eyJpdiI6IjVEbjh1V2toeTdCdUFhSDdWWkV3ZHc9PSIsInZhbHVlIjoiK1J5SVNi...; expires=...; Max-Age=7200; path=/; httponly; samesite=lax
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>...
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>      &lt;li&gt;application: 1 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>      &lt;li&gt;request: object no. 1 (no. 1 in the view),
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>        request received at 16:19:05.722&lt;/li&gt;
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>      &lt;li&gt;session: 1 visit(s) from this browser (1 in the view)&lt;/li&gt;
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>      &lt;li&gt;client: 1 visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>        1 (encrypted cookie)&lt;/li&gt;
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>...
+</code></pre></div></td></tr></table></div>
+<p>La respuesta establece cuatro cookies. La primera, <strong><em>[myVisits]</em></strong>, contiene el valor en texto plano. La segunda, <strong><em>[myEncryptedVisits]</em></strong>, contiene el mismo valor, cifrado: la parte visible es una cadena codificada en Base64 (JSON), que contiene el vector de inicialización del cifrado (<strong><em>[iv]</em></strong>), el valor cifrado (<strong><em>[value]</em></strong>) y un código de autenticación (<strong><em>[mac]</em></strong>), que garantiza que el valor no ha sido alterado. Las dos últimas corresponden a la sesión y a la protección anti-CSRF (ejemplo 20). Una segunda visita, con las mismas cookies:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>curl -i -c a.txt -b a.txt http://localhost:8000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>...
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>Set-Cookie: myVisits=2; path=/; httponly; samesite=lax
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>...
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>      &lt;li&gt;application: 2 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>      &lt;li&gt;request: object no. 2 (no. 2 in the view),
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>        request received at 16:19:05.922&lt;/li&gt;
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>      &lt;li&gt;session: 2 visit(s) from this browser (2 in the view)&lt;/li&gt;
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>      &lt;li&gt;client: 2 visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a>        2 (encrypted cookie)&lt;/li&gt;
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a>...
+</code></pre></div></td></tr></table></div>
+<p>Un segundo «navegador», con su propio archivo de cookies, que inicialmente está vacío:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>curl -c b.txt -b b.txt http://localhost:8000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>      &lt;li&gt;application: 3 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>      &lt;li&gt;request: object no. 3 (no. 3 in the view),
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>        request received at 16:19:06.027&lt;/li&gt;
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>      &lt;li&gt;session: 1 visit(s) from this browser (1 in the view)&lt;/li&gt;
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>      &lt;li&gt;client: 1 visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>        1 (encrypted cookie)&lt;/li&gt;
+</code></pre></div></td></tr></table></div>
+<p>El contador de la aplicación siguió avanzando; la sesión y las cookies del segundo navegador comienzan de nuevo en 1. Cada solicitud tuvo su propio objeto <strong><em>[RequestInfo]</em></strong>, y en cada una la acción y la vista fueron las mismas. Por último, un usuario malicioso falsifica sus propias cookies: 1000 visitas en <strong><em>[myVisits]</em></strong>, 999 en <strong><em>[myEncryptedVisits]</em></strong> y un identificador de sesión de su propia invención:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>curl -b "myVisits=1000;myEncryptedVisits=999;example23_session=abc" http://localhost:8000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>      &lt;li&gt;application: 4 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>      ...
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>      &lt;li&gt;session: 1 visit(s) from this browser (1 in the view)&lt;/li&gt;
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>      &lt;li&gt;client: 1001 visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>        1 (encrypted cookie)&lt;/li&gt;
+</code></pre></div></td></tr></table></div>
+<p>La cookie sin cifrar fue aceptada tal cual: 1001 visitas. La cookie <strong><em>[myEncryptedVisits]</em></strong>, en cambio, no pudo descifrarse: <em>[Laravel]</em>  la ignoró, como si estuviera ausente. Lo mismo ocurre con la cookie de sesión: el usuario no puede elegir la sesión de otro usuario y se le asigna una nueva. Esta es la diferencia clave entre una cookie normal y una cookie cifrada. Recordemos la regla: los datos provenientes del cliente son confiables solo si están <strong>protegidos</strong> por el servidor (cifrados, como aquí, o firmados, como el token del capítulo sobre autenticación); los datos que no tienen nada que ocultar y cuyo valor es verificado por el servidor (el idioma en el ejemplo 22) pueden permanecer en texto plano.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este tutorial, escrito por la IA <strong>Claude</strong> de Anthropic a petición de <strong>Serge Tahé</strong>, se pone a disposición del público bajo los términos de la
+        <em>licencia Creative Commons Atribución – No Comercial –
+        Compartir Igual 3.0 No adaptada</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
